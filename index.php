@@ -135,7 +135,7 @@
 				</dir>
 			</div>
 			<div class="row">
-				<div class="col-md-9">
+				<div class="col-md-8">
 					<div class="col-md-12">
 						<div class="map" id="map"></div>
 					</div>
@@ -146,13 +146,13 @@
 						<button class="btn btn-default btn-flat" style="display: none;" onclick="javascript: IntersectionAll(document.getElementById('polygon-all').value); " id="intersection-all"><i class="fa fa-gears"></i> Intersection Polygon</button>
 					</div>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-4">
 					<div class="alert alert-info" <?php if(@$_SESSION['s_delete'] == ''){ echo 'style="display: none; width:100%;"'; } ?> id="alert-info">
 						<button type="button" class="close" data-dismiss="alert">x</button>
 						<strong>Status : </strong> <font id="alert-text"><?php if($_SESSION['s_delete'] != ''){ echo @$_SESSION['s_delete']; unset($_SESSION['s_delete']); } ?></font>
 					</div>
 					<div class="form-map">
-						<iframe src="add.php" id="form-add" border="0" scrolling="no" style="border:none; height: 605px; width: 100%; padding: 0; margin: 0;"></iframe>
+						<iframe src="add.php" id="form-add" border="0" scrolling="no" style="border:none; height: 505px; width: 100%; padding: 0; margin: 0;"></iframe>
 					</div>
 				</div>
 			</div>
@@ -214,12 +214,10 @@
 		function getCoordinatesPolygons(coor, _Path){
 			var iframe = document.getElementById('form-add');
 			var area = google.maps.geometry.spherical.computeArea(_Path);
-			// console.log(coor);
-			var jarak = google.maps.geometry.spherical.computeDistanceBetween(coor);
-			console.log(jarak);
+			var jarak = google.maps.geometry.spherical.computeLength(_Path);
 			iframe.contentDocument.getElementById('wilayah').value = coor;
 			iframe.contentDocument.getElementById('luas_wilayah').value = area;
-			// iframe.contentDocument.getElementById('jarak_wilayah').value = jarak;
+			iframe.contentDocument.getElementById('jarak_wilayah').value = jarak;
 		}
 
 		function test(_PolygonCoords, _MarkerCoords) {

@@ -48,8 +48,23 @@
 		<script src="includes/jQuery-2.1.4.min.js"></script>
 		<script src="includes/bootstrap/js/bootstrap.min.js"></script>
 		<script src="includes/dist/js/app.min.js"></script>
+
+		<script type="text/javascript" src="includes/datepicker/bootstrap-datepicker.min.js"></script>
+		<link rel="stylesheet" href="includes/datepicker/bootstrap-datepicker3.css"/>
+
+		<script type="text/javascript">
+			$(function () {
+				var options={
+					format: 'mm/dd/yyyy',
+					todayHighlight: true,
+					autoclose: true,
+				};
+				$('#tanggal_berdiri').datepicker(options);
+			});
+		</script>
 	</head>
 	<body>
+
 		<form method="post" action="process.php">
 			<?php if($id_kabupaten == ''){ ?>
 			<input type="hidden" name="proc" value="add" />
@@ -58,18 +73,16 @@
 			<input type="hidden" name="id_kabupatenx" value="<?php echo $id_kabupaten; ?>" />
 			<?php } ?>
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-xs-12">
 					<div class="row">
-						<div class="col-md-12">
+						<div class="col-xs-5">
 							<div class="form-group">
 								<label>Kode Kabupaten</label>
 								<input type="text" name="id_kabupaten" id="id_kabupaten" class="form-control input-sm" placeholder="Kode kabupaten ..." autocomplete="off" value="<?php echo @$result['id_kabupaten']; ?>" required>
 							</div>
-						</div>	
-					</div>
+						</div>
 
-					<div class="row">
-						<div class="col-md-12">
+						<div class="col-xs-7">
 							<div class="form-group">
 								<label>Nama Kabupaten</label>
 								<input type="text" name="nama" id="nama" class="form-control input-sm" placeholder="Nama Kabupaten ..." autocomplete="off" value="<?php echo @$result['nama']; ?>" required>
@@ -78,7 +91,7 @@
 					</div>
 
 					<div class="row">
-						<div class="col-md-12">
+						<div class="col-xs-12">
 							<div class="form-group">
 								<label>Nama Bupati</label>
 								<input type="text" name="nama_bupati" id="nama_bupati" class="form-control input-sm" placeholder="Nama Bupati ..." autocomplete="off" value="<?php echo @$result['nama_bupati']; ?>" required>
@@ -87,25 +100,23 @@
 					</div>
 
 					<div class="row">
-						<div class="col-md-12">
+						<div class="col-xs-6">
+							<div class="form-group">
+								<label>Tanggal Berdiri</label>
+								<input type="text" name="tanggal_berdiri" id="tanggal_berdiri" class="form-control input-sm" placeholder="dd/mm/YYYY" style="width: 100px;" autocomplete="off" value="<?php echo implode_date(@$result['tanggal_berdiri']); ?>" required readonly>
+							</div>
+						</div>	
+
+						<div class="col-xs-5">
 							<div class="form-group">
 								<label>Jumlah Penduduk</label>
 								<input type="text" name="jumlah_penduduk" id="jumlah_penduduk" class="form-control input-sm" placeholder="0" style="text-align: center; width: 80px;" onkeypress="return onlyNumbers(event); " autocomplete="off" value="<?php echo @$result['jumlah_penduduk']; ?>" required>
 							</div>
-						</div>	
+						</div>
 					</div>
 
 					<div class="row">
-						<div class="col-md-12">
-							<div class="form-group">
-								<label>Tanggal Berdiri</label>
-								<input type="text" name="tanggal_berdiri" id="tanggal_berdiri" class="form-control input-sm" placeholder="dd/mm/YYYY" style="width: 100px;" autocomplete="off" value="<?php echo implode_date(@$result['tanggal_berdiri']); ?>" required>
-							</div>
-						</div>	
-					</div>
-
-					<div class="row">
-						<div class="col-md-12">
+						<div class="col-xs-12">
 							<div class="form-group">
 								<label>Pusat Kota</label>
 								<input type="text" name="pusat_kota" id="pusat_kota" class="form-control input-sm" placeholder="Lat, Lang" readonly autocomplete="off" value="<?php echo @$pusat_kota; ?>" required>
@@ -114,7 +125,7 @@
 					</div>
 
 					<div class="row">
-						<div class="col-md-12">
+						<div class="col-xs-12">
 							<div class="form-group">
 								<label>Wilayah</label>
 								<input type="text" name="wilayah" id="wilayah" class="form-control input-sm" placeholder="{Lat, Lang}" readonly autocomplete="off" value="<?php echo @$wilayah; ?>" required>
@@ -123,25 +134,23 @@
 					</div>
 
 					<div class="row">
-						<div class="col-md-12">
+						<div class="col-xs-6">
 							<div class="form-group">
-								<label>Luas Wilayah</label>
+								<label>Luas Wilayah m<sup>2</sup></label>
 								<input type="text" name="luas_wilayah" id="luas_wilayah" value="<?php echo @$result['luas_wilayah']; ?>" class="form-control input-sm" readonly placeholder="m2" />
 							</div>
 						</div>	
-					</div>
 
-					<div class="row">
-						<div class="col-md-12">
+						<div class="col-xs-6">
 							<div class="form-group">
-								<label>Luas Wilayah</label>
+								<label>Keliling Wilayah</label>
 								<input type="text" name="jarak_wilayah" id="jarak_wilayah" value="<?php echo @$result['jarak_wilayah']; ?>" class="form-control input-sm" readonly placeholder="m2" />
 							</div>
 						</div>	
 					</div>
 
 					<div class="row">
-						<div class="col-md-8 col-md-offset-2">
+						<div class="col-xs-8 col-xs-offset-2">
 							<button class="btn btn-primary btn-flat" type="submit"><i class="fa fa-map-marker"></i> Save</button>
 							<?php if(@$id_kabupaten == ''){ ?>
 							<button class="btn btn-default btn-flat" type="reset" onclick="javascript: window.top.document.getElementById('delete-all-button').click();"><i class="fa fa-undo"></i> Reset</button>
