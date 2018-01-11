@@ -55,7 +55,7 @@
 		<script type="text/javascript">
 			$(function () {
 				var options={
-					format: 'mm/dd/yyyy',
+					format: 'dd/mm/yyyy',
 					todayHighlight: true,
 					autoclose: true,
 				};
