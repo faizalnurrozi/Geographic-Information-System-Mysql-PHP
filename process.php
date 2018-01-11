@@ -15,6 +15,7 @@
 			$pusat_kota_text	= $_POST['pusat_kota'];
 			$wilayah_text		= $_POST['wilayah'];
 			$luas_wilayah		= $_POST['luas_wilayah'];
+			$jarak_wilayah		= $_POST['jarak_wilayah'];
 			
 			$pusat_kota_array 	= str_replace('(', '', $pusat_kota_text);
 			$pusat_kota_array 	= str_replace(')', '', $pusat_kota_array);
@@ -41,7 +42,7 @@
 
 			$wilayah .= "))";
 
-			$query_insert = $db->prepare("INSERT INTO _kabupaten(id_kabupaten, nama, nama_bupati, jumlah_penduduk, tanggal_berdiri, pusat_kota, wilayah, luas_wilayah) VALUES(:id_kabupaten, :nama, :nama_bupati, :jumlah_penduduk, :tanggal_berdiri, PointFromText(:pusat_kota), GeomFromText(:wilayah), :luas_wilayah)");
+			$query_insert = $db->prepare("INSERT INTO _kabupaten(id_kabupaten, nama, nama_bupati, jumlah_penduduk, tanggal_berdiri, pusat_kota, wilayah, luas_wilayah, jarak_wilayah) VALUES(:id_kabupaten, :nama, :nama_bupati, :jumlah_penduduk, :tanggal_berdiri, PointFromText(:pusat_kota), GeomFromText(:wilayah), :luas_wilayah, :jarak_wilayah)");
 			$query_insert->bindParam(':id_kabupaten', $id_kabupaten);
 			$query_insert->bindParam(':nama', $nama);
 			$query_insert->bindParam(':nama_bupati', $nama_bupati);
@@ -50,6 +51,7 @@
 			$query_insert->bindParam(':pusat_kota', $pusat_kota);
 			$query_insert->bindParam(':wilayah', $wilayah);
 			$query_insert->bindParam(':luas_wilayah', $luas_wilayah);
+			$query_insert->bindParam(':jarak_wilayah', $jarak_wilayah);
 			$query_insert->execute();
 
 			echo "
@@ -74,6 +76,7 @@
 			$pusat_kota_text	= $_POST['pusat_kota'];
 			$wilayah_text		= $_POST['wilayah'];
 			$luas_wilayah		= $_POST['luas_wilayah'];
+			$jarak_wilayah		= $_POST['jarak_wilayah'];
 			
 			$pusat_kota_array 	= str_replace('(', '', $pusat_kota_text);
 			$pusat_kota_array 	= str_replace(')', '', $pusat_kota_array);
@@ -98,7 +101,7 @@
 
 			$wilayah .= "))";
 
-			$query_insert = $db->prepare("UPDATE _kabupaten SET id_kabupaten = :id_kabupaten, nama = :nama, nama_bupati = :nama_bupati, jumlah_penduduk = :jumlah_penduduk, tanggal_berdiri = :tanggal_berdiri, pusat_kota = PointFromText(:pusat_kota), wilayah = GeomFromText(:wilayah), luas_wilayah = :luas_wilayah WHERE id_kabupaten = :id_kabupatenx");
+			$query_insert = $db->prepare("UPDATE _kabupaten SET id_kabupaten = :id_kabupaten, nama = :nama, nama_bupati = :nama_bupati, jumlah_penduduk = :jumlah_penduduk, tanggal_berdiri = :tanggal_berdiri, pusat_kota = PointFromText(:pusat_kota), wilayah = GeomFromText(:wilayah), luas_wilayah = :luas_wilayah, jarak_wilayah = :jarak_wilayah WHERE id_kabupaten = :id_kabupatenx");
 			$query_insert->bindParam(':id_kabupaten', $id_kabupaten);
 			$query_insert->bindParam(':id_kabupatenx', $id_kabupatenx);
 			$query_insert->bindParam(':nama', $nama);
@@ -108,6 +111,7 @@
 			$query_insert->bindParam(':pusat_kota', $pusat_kota);
 			$query_insert->bindParam(':wilayah', $wilayah);
 			$query_insert->bindParam(':luas_wilayah', $luas_wilayah);
+			$query_insert->bindParam(':jarak_wilayah', $jarak_wilayah);
 			$query_insert->execute();
 
 			echo "

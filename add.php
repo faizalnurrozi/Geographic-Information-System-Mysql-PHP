@@ -137,20 +137,20 @@
 						<div class="col-xs-6">
 							<div class="form-group">
 								<label>Luas Wilayah m<sup>2</sup></label>
-								<input type="text" name="luas_wilayah" id="luas_wilayah" value="<?php echo @$result['luas_wilayah']; ?>" class="form-control input-sm" readonly placeholder="m2" />
+								<input type="text" name="luas_wilayah" id="luas_wilayah" value="<?php echo @$result['luas_wilayah']; ?>" class="form-control input-sm" readonly placeholder="m2" required />
 							</div>
 						</div>	
 
 						<div class="col-xs-6">
 							<div class="form-group">
 								<label>Keliling Wilayah</label>
-								<input type="text" name="jarak_wilayah" id="jarak_wilayah" value="<?php echo @$result['jarak_wilayah']; ?>" class="form-control input-sm" readonly placeholder="m2" />
+								<input type="text" name="jarak_wilayah" id="jarak_wilayah" value="<?php echo @$result['jarak_wilayah']; ?>" class="form-control input-sm" readonly placeholder="m2" required />
 							</div>
 						</div>	
 					</div>
 
 					<div class="row">
-						<div class="col-xs-8 col-xs-offset-2">
+						<div class="col-xs-12 col-xs-offset-2">
 							<button class="btn btn-primary btn-flat" type="submit"><i class="fa fa-map-marker"></i> Save</button>
 							<?php if(@$id_kabupaten == ''){ ?>
 							<button class="btn btn-default btn-flat" type="reset" onclick="javascript: window.top.document.getElementById('delete-all-button').click();"><i class="fa fa-undo"></i> Reset</button>
