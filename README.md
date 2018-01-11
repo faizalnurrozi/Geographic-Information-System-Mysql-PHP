@@ -16,6 +16,7 @@ Manajemen Sistem Informasi Geografis (Create Read Update Delete)
     3. 'Update' / Mengubah data
     4. 'Delete' / Menghapus data
     5. Menghitung 'Luas wilayah'
-    6. Union / menggabungkan beberapa Polygon
-    7. Intersection / irisan dari beberapa Polygon
+    6. Menghitung 'Keliling wilayah'
+    7. Union / menggabungkan beberapa Polygon
+    8. Intersection / irisan dari beberapa Polygon
 
