@@ -80,19 +80,56 @@
 					}
 				}
 
+				if(union.__proto__.CLASS_NAME == 'jsts.geom.Polygon'){
+					var coords = union.getCoordinates().map(function (coord) {
+						return { lat: coord.x, lng: coord.y };
+					});
+
+					var unionCoor = new google.maps.Polygon({
+						paths: coords,
+						strokeColor: '#1E90FF',
+						strokeOpacity: 0.8,
+						strokeWeight: 2,
+						fillColor: '#1E90FF',
+						fillOpacity: 0.35
+					});
+
+					unionCoor.setMap(map);
+				}else{
+					// console.log(union.geometries);
+					for(i = 0; i < union.geometries.length; i++){
+						console.log(union.geometries[i].shell.points);
+
+						var coords = union.geometries[i].shell.points.map(function (coord) {
+							return { lat: coord.x, lng: coord.y };
+						});
+
+						var unionCoor = new google.maps.Polygon({
+							paths: coords,
+							strokeColor: '#1E90FF',
+							strokeOpacity: 0.8,
+							strokeWeight: 2,
+							fillColor: '#1E90FF',
+							fillOpacity: 0.35
+						});
+
+						unionCoor.setMap(map);
+					}
+				}
+
 				/**
 				 * Convert dari text spatial menjadi koordinat yang dibutuhkan Google Maps
 				 */
 
-				var coords = union.getCoordinates().map(function (coord) {
+				/*var coords = union.getCoordinates().map(function (coord) {
 					return { lat: coord.x, lng: coord.y };
-				});
+				});*/
 
 				/**
 				 * Menggambar Polygon yg sudah di UNION ke dalam Maps
 				 */
 
-				var unionCoor = new google.maps.Polygon({
+				/*var unionCoor = new google.maps.Polygon({
 					paths: coords,
 					strokeColor: '#1E90FF',
 					strokeOpacity: 0.8,
@@ -101,7 +138,7 @@
 					fillOpacity: 0.35
 				});
 
-				unionCoor.setMap(map);
+				unionCoor.setMap(map);*/
 				
 			}
 
